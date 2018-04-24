@@ -1,0 +1,37 @@
+Hi, 
+The below Solution is perfectly working for me to get the proper thumbnail URL for videos. 
+
+Steps to enable the Xuggler Library with new Bundle
+
+1) Remove the all Xuggler jars in the below path 
+Path : bundle\tomcat\lib\ext
+
+2) Replace the Xuggler jars in the below Dir
+Path : bundle\tomcat\webapps\portal\WEB-INF\lib
+Get the Jar by using the URL https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/xuggle/xuggle-xuggler/5.4/
+
+xuggle-xuggler-arch-x86_64-w64-mingw32.jar - 6293kb
+xuggle-xuggler-noarch.jar - 395 kb
+
+3) Install Imagemagic and GhostScript in your local directory.
+
+4) Start the Server and Goto ControlPanel -> Server Administration -> External Services
+a) Tick the checkbox to enable the ImageMagick and GhostScript provides document preview functionality.
+Path : Configure the installed path eg) C:\Data\gs\gs9.21\bin;C:\Data\ImageMagick
+
+b) Tick the checkbox to Enabling Xuggler provides video conversion functionality. Xuggler appears to be installed correctly. Enable to allow audio and video preview generation.
+
+Click Save button to confirm the Success message.
+
+5) Add the properties in portal-ext.properties
+imagemagick.global.search.path=C:\Data\gs\gs9.21\bin;C:\Data\ImageMagick
+dl.file.entry.preview.enabled=true
+dl.file.entry.thumbnail.enabled=true
+
+Please make sure the below properties are already enabled or not, if not add that too.
+xuggler.enabled=true
+imagemagick.enabled=true
+
+6) Then Again Restart the Server and deploy the below changes in ur portlet and testit.
+For Video
+thumbnailImage = DLUtil.getPreviewURL(fileEntry, latestFileVersion, themeDisplay, "&videoThumbnail=1");
