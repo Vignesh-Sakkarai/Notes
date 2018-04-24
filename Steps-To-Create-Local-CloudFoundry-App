@@ -1,0 +1,39 @@
+CloudFoundry
+============
+Create your account:
+	Sign-up for your free trial:
+	Pivotal Web Services, 30-day trial: http://run.pivotal.
+	
+Download the Cloud Foundry CLI:
+	http://github.com/cloudfoundry/cli
+	Set it in the PATH variable and type the cmd to verify CLI was installed correctly.
+	cf -help
+
+Login with the registered credentials
+	cf login -a https://api.run.pivotal.io 
+	cf apps, cf orgs, cf spaces, cf target  -> cmd to know about the information.
+	
+Create your Gradle or Maven Project through spring Initializor & Import it to Intellij
+
+Create a manifest.yml file for your application with Path and BuildPack
+	Path -> Execute gradle Build to generate the jar file 
+	BuildPack ->  https://github.com/cloudfoundry/java-buildpack.git#v3.9
+	appName, instance, domain, memory ..etc
+
+Push Your Application to cloudFoundry
+	cf push
+	
+Create DB Instance
+	Select the corresponding Market Place(select your DB)
+	Create a new Instance and Bind your application instance to that created instance.
+
+Click View Credentilas of ur service instance to get the URI
+	Get the URI for the Created Instance to access the pivotal provided MongoDB instance and configured in ur application.properties
+	eg) spring.data.mongodb.uri=mongodb://username:password@host/databasename
+	
+Build ur jar again, using cmd gradle Build to generate the updated jar file 
+
+Push Your Application again to cloudFoundry
+	cf push
+
+Finally Access the domain URL to view your application
