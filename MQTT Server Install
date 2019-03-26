@@ -1,0 +1,14 @@
+brew install mosquitto
+
+If the validation required between the MqttClient and Mosquitto Server then
+Mqtt Broker to Client validation through username and password
+Configure in mosquitto.conf
+allow_anonymous false
+password_file /usr/local/etc/mosquitto/pwdfile.txt
+
+mosquitto_passwd -c pwdfile.txt username
+password and Reenter password
+
+brew services
+brew services stop mosquitto
+brew services start mosquitto
